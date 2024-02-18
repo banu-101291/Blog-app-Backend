@@ -1,30 +1,41 @@
+import express from "express";
+import dotenv from "dotenv";
 import connectDB from "./config/db.js";
+import authRoutes from "./routes/authroute.js";
 
+import cors from "cors";
 
-
-//configure env
+//configuAre env
 dotenv.config();
 
 //databse config
 connectDB();
 
 //rest object
-
-
-
-
-const express = require('express');
-
 const app = express();
 
-app.get('/',(req,res)=>{
-    res.send("<h>Blogger App<h1>")
-})
+//middelwares
+app.use(cors());
+app.use(express.json());
 
 
-const PORT= process.env.PORT||5000;
+//routes
+app.use("/api/v1/auth", authRoutes);
 
 
-app.listen(PORT,()=>{
-    console.log(`server running on ${PORT}`);
-})
+
+//rest api
+app.get("/", (req, res) => {
+  res.send("<h1>Blogger</h1>");
+});
+
+//PORT
+const PORT = process.env.PORT || 9000;
+
+//run listen
+app.listen(PORT, () => {
+  console.log(
+    `Server Running on ${process.env.DEV_MODE} mode on port ${PORT}`
+    
+  );
+});
