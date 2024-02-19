@@ -6,7 +6,7 @@ import {
   forgotPasswordController,
   updateProfileController,
 } from "../controller/authcontroller.js";
-import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
+import { isAdmin, requireSignIn } from "../middlewares/authmiddleware.js"
 
 //router object
 const router = express.Router();
