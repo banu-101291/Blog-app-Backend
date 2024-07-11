@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authroute.js";
+import blogRoutes from './routes/blogRoutes.js';
 
 import cors from "cors";
 
@@ -22,11 +23,14 @@ app.use(express.json());
 //routes
 app.use("/api/v1/auth", authRoutes);
 
+app.use("/blog", blogRoutes);
+
+
 
 
 //rest api
 app.get("/", (req, res) => {
-  res.send("<h1>Blogger</h1>");
+  res.send("<h1>Blogger                                                                                                                                 </h1>");
 });
 
 //PORT
